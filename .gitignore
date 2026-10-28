@@ -5,4 +5,7 @@
 *.db
 *.db-shm
 *.db-wal
-.vs/
+**/.vs/
+*.csproj.user
+*.sln.docstates
+TestResults/

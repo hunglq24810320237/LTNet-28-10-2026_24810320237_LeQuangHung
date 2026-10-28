@@ -42,14 +42,46 @@ Ba ảnh dưới đây do người dùng cung cấp theo repo mẫu, theo thứ 
 
 ### 1. Giao diện chính và dữ liệu đọc từ MySQL
 
-![Giao diện chính MySQL](docs/reference/bai_db_ui.png)
+![Giao diện chính MySQL](docs/bai_db_ui.png)
 
 ### 2. Bắt lỗi Validation
 
-![Validation ErrorProvider](docs/reference/bai_db_error.png)
+![Validation ErrorProvider](docs/bai_db_error.png)
 
 ### 3. Thêm mới thành công
 
-![Kết quả thêm bản ghi MySQL](docs/reference/bai_db_result.png)
+![Kết quả thêm bản ghi MySQL](docs/bai_db_result.png)
 
 ---
+
+## V. HƯỚNG DẪN CÀI ĐẶT & CHẠY
+
+1. Khởi động MySQL.
+2. Mở `src/Database/ql_sinhvien.sql` bằng MySQL Workbench hoặc phpMyAdmin và chạy toàn bộ script.
+3. Mở `src/WinFormsAppSolution.sln` bằng Visual Studio hoặc chạy từng project bằng `dotnet run`.
+4. Mặc định kết nối `127.0.0.1:3307`, user `root`, mật khẩu trống. Có thể tùy chỉnh qua biến môi trường `BAITAP_MYSQL_SERVER`, `BAITAP_MYSQL_PORT`, `BAITAP_MYSQL_USER`, `BAITAP_MYSQL_PASSWORD`.
+
+---
+
+## VI. CẤU TRÚC REPOSITORY
+
+```
+LTNet-28-10-2026_24810320237_LeQuangHung/
+├── .gitignore
+├── README.md
+├── docs/
+│   ├── bai_db_ui.png
+│   ├── bai_db_error.png
+│   └── bai_db_result.png
+└── src/
+    ├── WinFormsAppSolution.sln
+    ├── BaiTap4.1-Login/
+    ├── BaiTap4.2-DangKy/
+    └── Database/ql_sinhvien.sql
+```
+
+* `src/WinFormsAppSolution.sln`: solution mở bằng Visual Studio.
+* `src/BaiTap4.1-Login/`: ứng dụng đăng nhập.
+* `src/BaiTap4.2-DangKy/`: ứng dụng đăng ký học viên.
+* `src/Database/ql_sinhvien.sql`: script MySQL tạo CSDL, bảng và ba dòng sinh viên mẫu theo đề bài.
+* `docs/`: ba ảnh MySQL tham khảo bạn cung cấp theo mẫu README.
