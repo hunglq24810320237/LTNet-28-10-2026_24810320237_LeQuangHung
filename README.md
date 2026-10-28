@@ -53,19 +53,3 @@ Ba ảnh dưới đây do người dùng cung cấp theo repo mẫu, theo thứ 
 ![Kết quả thêm bản ghi MySQL](docs/reference/bai_db_result.png)
 
 ---
-
-## V. HƯỚNG DẪN CÀI ĐẶT & CHẠY
-
-1. Khởi động MySQL trong XAMPP.
-2. Mở `Database/ql_sinhvien.sql` bằng MySQL Workbench hoặc phpMyAdmin và chạy toàn bộ script.
-3. Mở một trong hai project bằng Visual Studio hoặc chạy `dotnet run` tại thư mục project.
-4. Mặc định kết nối `127.0.0.1:3307`, user `root`, mật khẩu trống. Có thể tùy chỉnh qua biến môi trường `BAITAP_MYSQL_SERVER`, `BAITAP_MYSQL_PORT`, `BAITAP_MYSQL_USER`, `BAITAP_MYSQL_PASSWORD`.
-
----
-
-## VI. CẤU TRÚC REPOSITORY
-
-* `BaiTap4.1-Login/`: ứng dụng đăng nhập.
-* `BaiTap4.2-DangKy/`: ứng dụng đăng ký học viên.
-* `Database/ql_sinhvien.sql`: script MySQL tạo CSDL, bảng và ba dòng sinh viên mẫu theo đề bài.
-* `docs/reference/`: ba ảnh MySQL theo mẫu README bạn gửi.
