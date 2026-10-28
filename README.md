@@ -52,6 +52,15 @@ Ba ảnh dưới đây do người dùng cung cấp theo repo mẫu, theo thứ 
 
 ![Kết quả thêm bản ghi MySQL](docs/bai_db_result.png)
 
+### 4. Ảnh giao diện 4.1/4.2 đã khôi phục
+
+Bốn ảnh form dưới đây đã được khôi phục từ phiên bản trước. Chúng là ảnh giao diện cũ, chụp khi project còn dùng SQL Server.
+
+* [Bài 4.1 — Giao diện đăng nhập](docs/bai4_1_login.png)
+* [Bài 4.1 — Validation](docs/bai4_1_error.png)
+* [Bài 4.2 — Giao diện đăng ký](docs/bai4_2_main.png)
+* [Bài 4.2 — Validation](docs/bai4_2_error.png)
+
 ---
 
 ## V. HƯỚNG DẪN CÀI ĐẶT & CHẠY
@@ -72,7 +81,11 @@ LTNet-28-10-2026_24810320237_LeQuangHung/
 ├── docs/
 │   ├── bai_db_ui.png
 │   ├── bai_db_error.png
-│   └── bai_db_result.png
+│   ├── bai_db_result.png
+│   ├── bai4_1_login.png
+│   ├── bai4_1_error.png
+│   ├── bai4_2_main.png
+│   └── bai4_2_error.png
 └── src/
     ├── WinFormsAppSolution.sln
     ├── BaiTap4.1-Login/
