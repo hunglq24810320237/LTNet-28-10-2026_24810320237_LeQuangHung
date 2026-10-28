@@ -1,100 +1,101 @@
-# BÁO CÁO BÀI TẬP THỰC HÀNH LẬP TRÌNH C# WINFORMS - KẾT NỐI CƠ SỞ DỮ LIỆU MYSQL
+# QUẢN LÝ SINH VIÊN - MYSQL DATABASE
 
 ## I. THÔNG TIN SINH VIÊN
 
 * **Họ và tên:** Lê Quang Hưng
 * **Mã số sinh viên:** 24810320237
-* **Lớp học phần:** Lập trình .NET - Mã lớp: D19QTANM1
-* **Tên bài tập:** Nâng cấp Bài 4.1 và 4.2 lưu trữ vào MySQL (`ql_sinhvien`)
+* **Lớp:** D19QTANM1
+* **Môn học:** Lập trình .NET / Windows Forms
+* **Chủ đề:** LTNet-28-10-2026_24810320237_LeQuangHung
 
 ---
 
-## II. THÔNG TIN HỆ THỐNG & CƠ SỞ DỮ LIỆU
+## II. GIỚI THIỆU
 
-* **Hệ quản trị CSDL:** MySQL (host `127.0.0.1`, port `3307`)
-* **Cơ sở dữ liệu:** `ql_sinhvien` (`utf8mb4_unicode_ci`)
-* **Bảng theo đề:** `SinhVien` (`MaSV`, `HoTen`, `NgaySinh`, `GioiTinh`, `Lop`, `DiemTB`)
-* **Bảng bổ sung cho bài:** `TaiKhoan`, `KhoaHoc`, `DangKyHocVien`
-* **Công nghệ / thư viện:** C# .NET 10 Windows Forms, `MySql.Data`
+Ứng dụng Windows Forms quản lý hồ sơ sinh viên bằng MySQL. Chương trình tải danh sách sinh viên khi mở form và hỗ trợ thêm, cập nhật, xóa, chọn dòng để xem chi tiết, kiểm tra dữ liệu nhập bằng `ErrorProvider`.
 
----
+### Công nghệ
 
-## III. CÁC TÍNH NĂNG ĐÃ HOÀN THÀNH
-
-### 1. Bài tập 4.1: Form đăng nhập chuẩn UX
-
-* `ErrorProvider` kiểm tra tên đăng nhập và mật khẩu bắt buộc.
-* Enter đăng nhập, Esc thoát; `CheckBox` hiện/ẩn mật khẩu.
-* Xác thực tài khoản từ bảng `TaiKhoan`, liên kết tới `SinhVien`; mật khẩu dùng PBKDF2-SHA256 kèm salt.
-* Tài khoản khởi tạo: `student` / `123456`.
-
-### 2. Bài tập 4.2: Form đăng ký học viên
-
-* Dùng `MaskedTextBox` với mask `(000) 000-0000`, `DateTimePicker` theo `dd/MM/yyyy`, RadioButton và CheckBox.
-* ComboBox nạp khóa học từ bảng `KhoaHoc` bằng `DisplayMember` và `ValueMember`.
-* Lưu hồ sơ vào `SinhVien`, chi tiết vào `DangKyHocVien` trong cùng một transaction MySQL.
+* C# Windows Forms, .NET 10
+* MySQL và thư viện `MySql.Data`
+* Bảng `SinhVien` theo cấu trúc CSDL giảng viên cung cấp
 
 ---
 
-## IV. HÌNH ẢNH MINH HỌA MYSQL
+## III. CẤU TRÚC CƠ SỞ DỮ LIỆU
 
-Ba ảnh dưới đây do người dùng cung cấp theo repo mẫu, theo thứ tự giao diện, Validation và thêm mới thành công.
+Database: `ql_sinhvien` (charset `utf8mb4`, collation `utf8mb4_unicode_ci`).
 
-### 1. Giao diện chính và dữ liệu đọc từ MySQL
+| Cột | Kiểu dữ liệu | Mô tả |
+|---|---|---|
+| `MaSV` | `VARCHAR(20)` | Mã sinh viên, khóa chính |
+| `HoTen` | `VARCHAR(100)` | Họ tên, bắt buộc |
+| `NgaySinh` | `DATE` | Ngày sinh |
+| `GioiTinh` | `VARCHAR(10)` | Giới tính |
+| `Lop` | `VARCHAR(50)` | Lớp học |
+| `DiemTB` | `DECIMAL(4,2)` | Điểm trung bình |
 
-![Giao diện chính MySQL](docs/bai_db_ui.png)
-
-### 2. Bắt lỗi Validation
-
-![Validation ErrorProvider](docs/bai_db_error.png)
-
-### 3. Thêm mới thành công
-
-![Kết quả thêm bản ghi MySQL](docs/bai_db_result.png)
-
-### 4. Ảnh giao diện 4.1/4.2 đã khôi phục
-
-Bốn ảnh form dưới đây đã được khôi phục từ phiên bản trước. Chúng là ảnh giao diện cũ, chụp khi project còn dùng SQL Server.
-
-* [Bài 4.1 — Giao diện đăng nhập](docs/bai4_1_login.png)
-* [Bài 4.1 — Validation](docs/bai4_1_error.png)
-* [Bài 4.2 — Giao diện đăng ký](docs/bai4_2_main.png)
-* [Bài 4.2 — Validation](docs/bai4_2_error.png)
+Script tạo database, bảng và ba dòng dữ liệu mẫu ở [src/Database/ql_sinhvien.sql](src/Database/ql_sinhvien.sql).
 
 ---
 
-## V. HƯỚNG DẪN CÀI ĐẶT & CHẠY
+## IV. CHỨC NĂNG
 
-1. Khởi động MySQL.
-2. Mở `src/Database/ql_sinhvien.sql` bằng MySQL Workbench hoặc phpMyAdmin và chạy toàn bộ script.
-3. Mở `src/WinFormsAppSolution.sln` bằng Visual Studio hoặc chạy từng project bằng `dotnet run`.
-4. Mặc định kết nối `127.0.0.1:3307`, user `root`, mật khẩu trống. Có thể tùy chỉnh qua biến môi trường `BAITAP_MYSQL_SERVER`, `BAITAP_MYSQL_PORT`, `BAITAP_MYSQL_USER`, `BAITAP_MYSQL_PASSWORD`.
+1. Hiển thị dữ liệu `SinhVien` trong `DataGridView`.
+2. Thêm sinh viên mới; báo lỗi nếu thiếu mã, họ tên hoặc lớp, và báo nếu trùng mã.
+3. Cập nhật thông tin sinh viên được chọn.
+4. Xóa sinh viên sau khi xác nhận.
+5. Nút làm mới xóa dữ liệu trên form để nhập bản ghi mới.
+6. Hiển thị ngày sinh theo `dd/MM/yyyy`; điểm trung bình trong khoảng 0–10.
 
 ---
 
-## VI. CẤU TRÚC REPOSITORY
+## V. HÌNH ẢNH THAM KHẢO
 
-```
+Các hình dưới đây là ảnh tham khảo giao diện mẫu đã được cung cấp trong yêu cầu. Chúng không phải ảnh chụp phiên chạy của mã nguồn trong repository này.
+
+### 1. Giao diện và danh sách sinh viên
+
+![Ảnh tham khảo giao diện quản lý sinh viên](docs/bai_db_ui.png)
+
+### 2. Kiểm tra dữ liệu nhập
+
+![Ảnh tham khảo ErrorProvider](docs/bai_db_error.png)
+
+### 3. Thông báo thêm sinh viên thành công
+
+![Ảnh tham khảo thêm mới thành công](docs/bai_db_result.png)
+
+---
+
+## VI. CÀI ĐẶT VÀ CHẠY
+
+1. Bật MySQL Server.
+2. Mở và chạy toàn bộ script `src/Database/ql_sinhvien.sql` bằng MySQL Workbench hoặc phpMyAdmin.
+3. Mở `src/WinFormsAppSolution.sln` bằng Visual Studio, chọn project `QuanLySinhVienDB` làm Startup Project và chạy.
+4. Kết nối mặc định là `127.0.0.1:3307`, database `ql_sinhvien`, username `root`, password rỗng. Chỉnh kết nối bằng biến môi trường nếu máy dùng thông tin khác:
+
+   * `BAITAP_MYSQL_SERVER`
+   * `BAITAP_MYSQL_PORT`
+   * `BAITAP_MYSQL_USER`
+   * `BAITAP_MYSQL_PASSWORD`
+
+---
+
+## VII. CẤU TRÚC REPOSITORY
+
+```text
 LTNet-28-10-2026_24810320237_LeQuangHung/
 ├── .gitignore
 ├── README.md
 ├── docs/
 │   ├── bai_db_ui.png
 │   ├── bai_db_error.png
-│   ├── bai_db_result.png
-│   ├── bai4_1_login.png
-│   ├── bai4_1_error.png
-│   ├── bai4_2_main.png
-│   └── bai4_2_error.png
+│   └── bai_db_result.png
 └── src/
     ├── WinFormsAppSolution.sln
-    ├── BaiTap4.1-Login/
-    ├── BaiTap4.2-DangKy/
+    ├── QuanLySinhVienDB/
     └── Database/ql_sinhvien.sql
 ```
 
-* `src/WinFormsAppSolution.sln`: solution mở bằng Visual Studio.
-* `src/BaiTap4.1-Login/`: ứng dụng đăng nhập.
-* `src/BaiTap4.2-DangKy/`: ứng dụng đăng ký học viên.
-* `src/Database/ql_sinhvien.sql`: script MySQL tạo CSDL, bảng và ba dòng sinh viên mẫu theo đề bài.
-* `docs/`: ba ảnh MySQL tham khảo bạn cung cấp theo mẫu README.
+`.gitignore` loại trừ các thư mục sinh tự động như `.vs`, `bin`, `obj` và file người dùng Visual Studio. Hai project bài 4.1/4.2 đã làm trước đây vẫn được giữ trong source để tránh mất bài; solution hiện mở trực tiếp ứng dụng quản lý sinh viên.
