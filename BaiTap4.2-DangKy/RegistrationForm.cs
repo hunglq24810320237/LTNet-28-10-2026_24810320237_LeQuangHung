@@ -51,7 +51,7 @@ internal sealed class RegistrationForm : Form
         chkOnline.Text = "Học trực tuyến"; chkOnline.AutoSize = true; chkOnline.Location = new Point(400, 240);
         chkMaterials.Text = "Nhận tài liệu khóa học"; chkMaterials.AutoSize = true; chkMaterials.Location = new Point(400, 275);
         card.Controls.Add(chkOnline); card.Controls.Add(chkMaterials);
-        var hint = new Label { Text = "Thông tin được lưu trong SQL Server.", AutoSize = true, ForeColor = Color.FromArgb(120, 130, 148), Location = new Point(30, 345) };
+        var hint = new Label { Text = "Thông tin được lưu trong MySQL.", AutoSize = true, ForeColor = Color.FromArgb(120, 130, 148), Location = new Point(30, 345) };
         card.Controls.Add(hint);
         var register = new Button { Text = "Đăng ký học viên", Location = new Point(30, 380), Size = new Size(190, 42) };
         StyleButton(register, Color.FromArgb(79, 70, 229), Color.White);

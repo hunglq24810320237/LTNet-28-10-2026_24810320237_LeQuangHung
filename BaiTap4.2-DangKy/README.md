@@ -1,20 +1,24 @@
-# Bài tập 4.2 — Form đăng ký học viên + SQL Server
+# Bài tập 4.2 — Form đăng ký học viên với MySQL
 
-Ứng dụng Windows Forms .NET 10 lưu học viên vào database `ql_sinhvien`. Dữ liệu chính được ghi vào `dbo.SinhVien`; bảng `dbo.DangKyHocVien` lưu điện thoại, khóa học và các lựa chọn, liên kết với `SinhVien`. Danh sách khóa học lấy từ `dbo.KhoaHoc`.
+Ứng dụng Windows Forms .NET 10 lưu hồ sơ đăng ký vào database `ql_sinhvien`. Hồ sơ sinh viên lưu trong `SinhVien`; số điện thoại, khóa học và lựa chọn dịch vụ lưu trong `DangKyHocVien`. Khóa học được nạp từ `KhoaHoc`.
 
-## Chạy ứng dụng
+## Cơ sở dữ liệu
+
+1. Bật MySQL trong XAMPP.
+2. Chạy script [`../Database/ql_sinhvien.sql`](../Database/ql_sinhvien.sql) trong MySQL Workbench hoặc phpMyAdmin.
+3. Chạy ứng dụng; mỗi lần đăng ký ghi hồ sơ và chi tiết trong cùng transaction.
+
+Mặc định kết nối `127.0.0.1:3307`, user `root`, mật khẩu trống. Có thể tùy chỉnh `BAITAP_MYSQL_SERVER`, `BAITAP_MYSQL_PORT`, `BAITAP_MYSQL_USER`, `BAITAP_MYSQL_PASSWORD`.
+
+## Tính năng
+
+- `MaskedTextBox` mask `(000) 000-0000`; `DateTimePicker` hiển thị `dd/MM/yyyy`.
+- ComboBox binding khóa học qua `DisplayMember` / `ValueMember`.
+- RadioButton chọn giới tính; CheckBox chọn hình thức học và nhận tài liệu.
+- Validation bằng `ErrorProvider`; tạo mã sinh viên `SV004`, `SV005`, ... và hiển thị tóm tắt đăng ký.
+
+## Chạy
 
 ```powershell
 dotnet run --project RegistrationApp.csproj
 ```
-
-Mặc định kết nối `localhost\SQLEXPRESS` bằng Windows Authentication. Ứng dụng tự tạo database, bảng và dữ liệu mẫu khi chạy lần đầu. Mã sinh viên mới được sinh tự động theo dạng `SV004`, `SV005`, ... Có thể đặt biến môi trường `BAITAP_SQLSERVER_SERVER` nếu SQL Server dùng instance khác.
-
-Cũng có thể chạy script T-SQL chung trong SSMS: [`../Database/ql_sinhvien.sql`](../Database/ql_sinhvien.sql).
-
-## Tính năng
-
-- `MaskedTextBox` theo mẫu `(000) 000-0000`; ngày sinh hiển thị `dd/MM/yyyy`.
-- `ComboBox` binding với `DisplayMember=Name`, `ValueMember=Id`; khóa học được nạp từ SQL Server.
-- Chọn giới tính bằng RadioButton, hình thức học và tài liệu bằng CheckBox.
-- Kiểm tra dữ liệu, ghi hồ sơ sinh viên và chi tiết đăng ký trong cùng một transaction SQL Server, hiển thị mã sinh viên và bản tóm tắt qua MessageBox.

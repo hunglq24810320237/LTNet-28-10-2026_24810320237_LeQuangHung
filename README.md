@@ -1,57 +1,71 @@
-# BÁO CÁO BÀI TẬP THỰC HÀNH LẬP TRÌNH C# WINFORMS
+# BÁO CÁO BÀI TẬP THỰC HÀNH LẬP TRÌNH C# WINFORMS - KẾT NỐI CƠ SỞ DỮ LIỆU MYSQL
 
 ## I. THÔNG TIN SINH VIÊN
+
 * **Họ và tên:** Lê Quang Hưng
 * **Mã số sinh viên:** 24810320237
-* **Lớp học phần:** Lập trình .NET - Mã Lớp: d19qtanm1
-
-* **Link Repository:** https://github.com/hunglq24810320237/LTNet-28-10-2026_24810320237_LeQuangHung
-
----
-
-## II. NỘI DUNG BÀI TẬP
-* **Bài tập 4.1:** Xây dựng Form đăng nhập chuẩn UX và xác thực tài khoản từ SQL Server.
-* **Bài tập 4.2:** Xây dựng Form đăng ký học viên, binding khóa học và lưu hồ sơ vào SQL Server.
-* Cả hai bài cùng sử dụng database `ql_sinhvien` theo cấu trúc của giảng viên; bảng `SinhVien` giữ ba dòng dữ liệu mẫu ban đầu.
+* **Lớp học phần:** Lập trình .NET - Mã lớp: D19QTANM1
+* **Tên bài tập:** Nâng cấp Bài 4.1 và 4.2 lưu trữ vào MySQL (`ql_sinhvien`)
 
 ---
 
-## III. MINH HỌA GIAO DIỆN & KỸ THUẬT NỔI BẬT
+## II. THÔNG TIN HỆ THỐNG & CƠ SỞ DỮ LIỆU
 
-### 1. Bài 4.1: Xây dựng Form Đăng nhập (Login Form)
-* **Kỹ thuật áp dụng:** `ErrorProvider` kiểm tra tên đăng nhập và mật khẩu; `AcceptButton` / `CancelButton` cho phím Enter và Esc; `UseSystemPasswordChar` để hiện/ẩn mật khẩu.
-* **Lưu trữ CSDL:** SQL Server database `ql_sinhvien`, bảng `dbo.TaiKhoan`; mật khẩu lưu dạng PBKDF2-SHA256 có salt. Tài khoản mẫu `student` / `123456` gắn với `SV001`.
-* **Tài khoản mẫu:** `student` / `123456` (được khởi tạo khi chạy ứng dụng lần đầu).
-* **Hướng dẫn chạy:** [BaiTap4.1-Login/README.md](BaiTap4.1-Login/README.md)
-
-* **Hình ảnh minh họa giao diện:**
-
-![Giao diện chính Bài 4.1](docs/bai4_1_login.png)
-*Mô tả: Form đăng nhập với trường tên đăng nhập, mật khẩu, tùy chọn hiện mật khẩu và các nút thao tác.*
-
-![Bắt lỗi Validation Bài 4.1](docs/bai4_1_error.png)
-*Mô tả: ErrorProvider hiển thị lỗi khi để trống tên đăng nhập và mật khẩu.*
+* **Hệ quản trị CSDL:** MySQL (host `127.0.0.1`, port `3307`)
+* **Cơ sở dữ liệu:** `ql_sinhvien` (`utf8mb4_unicode_ci`)
+* **Bảng theo đề:** `SinhVien` (`MaSV`, `HoTen`, `NgaySinh`, `GioiTinh`, `Lop`, `DiemTB`)
+* **Bảng bổ sung cho bài:** `TaiKhoan`, `KhoaHoc`, `DangKyHocVien`
+* **Công nghệ / thư viện:** C# .NET 10 Windows Forms, `MySql.Data`
 
 ---
 
-### 2. Bài 4.2: Form Đăng ký Học viên
-* **Kỹ thuật áp dụng:** `MaskedTextBox` với mask `(000) 000-0000`, `DateTimePicker` định dạng `dd/MM/yyyy`, `ComboBox` binding qua `DisplayMember` / `ValueMember`, `RadioButton` chọn giới tính và `CheckBox` chọn hình thức học / tài liệu.
-* **Lưu trữ CSDL:** Khóa học đọc từ `dbo.KhoaHoc`; hồ sơ sinh viên được ghi vào `dbo.SinhVien`, chi tiết form được ghi vào `dbo.DangKyHocVien` có khóa ngoại.
-* **Kết quả:** Kiểm tra dữ liệu bắt buộc, sinh mã `SV004` trở lên, lưu hồ sơ và chi tiết đăng ký trong một transaction, hiển thị thông tin trên `MessageBox`.
-* **Hướng dẫn chạy:** [BaiTap4.2-DangKy/README.md](BaiTap4.2-DangKy/README.md)
+## III. CÁC TÍNH NĂNG ĐÃ HOÀN THÀNH
 
-* **Hình ảnh minh họa giao diện:**
+### 1. Bài tập 4.1: Form đăng nhập chuẩn UX
 
-![Giao diện chính Bài 4.2](docs/bai4_2_main.png)
-*Mô tả: Form đăng ký với thông tin cá nhân, danh sách khóa học đã nạp từ SQL Server và các lựa chọn đăng ký.*
+* `ErrorProvider` kiểm tra tên đăng nhập và mật khẩu bắt buộc.
+* Enter đăng nhập, Esc thoát; `CheckBox` hiện/ẩn mật khẩu.
+* Xác thực tài khoản từ bảng `TaiKhoan`, liên kết tới `SinhVien`; mật khẩu dùng PBKDF2-SHA256 kèm salt.
+* Tài khoản khởi tạo: `student` / `123456`.
 
-![Bắt lỗi Validation Bài 4.2](docs/bai4_2_error.png)
-*Mô tả: ErrorProvider yêu cầu nhập họ tên và số điện thoại theo đúng mask.*
+### 2. Bài tập 4.2: Form đăng ký học viên
+
+* Dùng `MaskedTextBox` với mask `(000) 000-0000`, `DateTimePicker` theo `dd/MM/yyyy`, RadioButton và CheckBox.
+* ComboBox nạp khóa học từ bảng `KhoaHoc` bằng `DisplayMember` và `ValueMember`.
+* Lưu hồ sơ vào `SinhVien`, chi tiết vào `DangKyHocVien` trong cùng một transaction MySQL.
 
 ---
 
-### Cấu hình và chạy chương trình
-* **Công nghệ:** C# Windows Forms, .NET 10, Microsoft SQL Server.
-* **Yêu cầu:** Windows, .NET 10 SDK và SQL Server (mặc định `localhost\SQLEXPRESS`).
-* Script T-SQL tạo database, bảng và dữ liệu mẫu: [`Database/ql_sinhvien.sql`](Database/ql_sinhvien.sql). Cú pháp đã chuyển sang T-SQL để chạy trong SSMS; dữ liệu và tên trường theo đề bài.
+## IV. HÌNH ẢNH MINH HỌA MYSQL
 
+Ba ảnh dưới đây do người dùng cung cấp theo repo mẫu, theo thứ tự giao diện, Validation và thêm mới thành công.
+
+### 1. Giao diện chính và dữ liệu đọc từ MySQL
+
+![Giao diện chính MySQL](docs/reference/bai_db_ui.png)
+
+### 2. Bắt lỗi Validation
+
+![Validation ErrorProvider](docs/reference/bai_db_error.png)
+
+### 3. Thêm mới thành công
+
+![Kết quả thêm bản ghi MySQL](docs/reference/bai_db_result.png)
+
+---
+
+## V. HƯỚNG DẪN CÀI ĐẶT & CHẠY
+
+1. Khởi động MySQL trong XAMPP.
+2. Mở `Database/ql_sinhvien.sql` bằng MySQL Workbench hoặc phpMyAdmin và chạy toàn bộ script.
+3. Mở một trong hai project bằng Visual Studio hoặc chạy `dotnet run` tại thư mục project.
+4. Mặc định kết nối `127.0.0.1:3307`, user `root`, mật khẩu trống. Có thể tùy chỉnh qua biến môi trường `BAITAP_MYSQL_SERVER`, `BAITAP_MYSQL_PORT`, `BAITAP_MYSQL_USER`, `BAITAP_MYSQL_PASSWORD`.
+
+---
+
+## VI. CẤU TRÚC REPOSITORY
+
+* `BaiTap4.1-Login/`: ứng dụng đăng nhập.
+* `BaiTap4.2-DangKy/`: ứng dụng đăng ký học viên.
+* `Database/ql_sinhvien.sql`: script MySQL tạo CSDL, bảng và ba dòng sinh viên mẫu theo đề bài.
+* `docs/reference/`: ba ảnh MySQL theo mẫu README bạn gửi.
