@@ -102,9 +102,9 @@ internal sealed class RegistrationForm : Form
             Gender = rdoFemale.Checked ? "Nữ" : "Nam", CourseId = course.Id, CourseName = course.Name,
             IsOnline = chkOnline.Checked, NeedsMaterials = chkMaterials.Checked
         };
-        record.Id = Database.Save(record);
-        lblSaved.Text = $"Đã lưu hồ sơ #{record.Id} · Tổng {Database.Count()} học viên";
-        var summary = $"Mã đăng ký: {record.Id}\nHọ tên: {record.FullName}\nĐiện thoại: {record.Phone}\nNgày sinh: {record.BirthDate:dd/MM/yyyy}\nGiới tính: {record.Gender}\nKhóa học: {record.CourseName}\nHọc trực tuyến: {(record.IsOnline ? "Có" : "Không")}\nNhận tài liệu: {(record.NeedsMaterials ? "Có" : "Không")}";
+        record = Database.Save(record);
+        lblSaved.Text = $"Đã lưu {record.StudentId} · Tổng {Database.Count()} lượt đăng ký";
+        var summary = $"Mã sinh viên: {record.StudentId}\nMã đăng ký: {record.Id}\nHọ tên: {record.FullName}\nĐiện thoại: {record.Phone}\nNgày sinh: {record.BirthDate:dd/MM/yyyy}\nGiới tính: {record.Gender}\nKhóa học: {record.CourseName}\nHọc trực tuyến: {(record.IsOnline ? "Có" : "Không")}\nNhận tài liệu: {(record.NeedsMaterials ? "Có" : "Không")}";
         MessageBox.Show(this, summary, "Đăng ký thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
         txtName.Clear(); mtxtPhone.Clear(); txtName.Focus();
     }

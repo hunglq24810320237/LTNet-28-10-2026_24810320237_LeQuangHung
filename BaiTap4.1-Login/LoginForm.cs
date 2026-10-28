@@ -13,8 +13,8 @@ internal sealed class LoginForm : Form
     {
         Text = "Đăng nhập · Bài tập 4.1";
         StartPosition = FormStartPosition.CenterScreen;
-        ClientSize = new Size(480, 535);
-        MinimumSize = new Size(440, 500);
+        ClientSize = new Size(460, 550);
+        MinimumSize = new Size(450, 560);
         BackColor = Color.FromArgb(246, 248, 252);
         Font = new Font("Segoe UI", 10F);
         AcceptButton = btnLogin;
@@ -30,38 +30,38 @@ internal sealed class LoginForm : Form
 
     private void BuildLayout()
     {
-        var card = new Panel { BackColor = Color.White, Size = new Size(390, 445), Location = new Point(45, 45), Padding = new Padding(30) };
+        var card = new Panel { BackColor = Color.White, Size = new Size(340, 410), Location = new Point(20, 15), Padding = new Padding(24) };
         card.Paint += (_, e) => ControlPaint.DrawBorder(e.Graphics, card.ClientRectangle, Color.FromArgb(229, 233, 241), ButtonBorderStyle.Solid);
         Controls.Add(card);
-        card.Controls.Add(new Label { Text = "◉", Font = new Font("Segoe UI Symbol", 30, FontStyle.Bold), ForeColor = Color.FromArgb(79, 70, 229), AutoSize = true, Location = new Point(28, 22) });
-        card.Controls.Add(new Label { Text = "Chào mừng trở lại", Font = new Font("Segoe UI", 21, FontStyle.Bold), ForeColor = Color.FromArgb(26, 35, 55), AutoSize = true, Location = new Point(28, 82) });
-        card.Controls.Add(new Label { Text = "Đăng nhập để tiếp tục vào hệ thống học viên.", ForeColor = Color.FromArgb(105, 115, 135), AutoSize = true, Location = new Point(30, 125) });
-        AddField(card, "Tên đăng nhập", txtUsername, 175);
-        AddField(card, "Mật khẩu", txtPassword, 255);
+        card.Controls.Add(new Label { Text = "◉", Font = new Font("Segoe UI Symbol", 27, FontStyle.Bold), ForeColor = Color.FromArgb(79, 70, 229), AutoSize = true, Location = new Point(22, 13) });
+        card.Controls.Add(new Label { Text = "Chào mừng trở lại", Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = Color.FromArgb(26, 35, 55), AutoSize = true, Location = new Point(22, 65) });
+        card.Controls.Add(new Label { Text = "Đăng nhập để tiếp tục vào hệ thống học viên.", Font = new Font("Segoe UI", 8.5F), ForeColor = Color.FromArgb(105, 115, 135), AutoSize = true, Location = new Point(24, 104) });
+        AddField(card, "Tên đăng nhập", txtUsername, 143);
+        AddField(card, "Mật khẩu", txtPassword, 215);
         txtPassword.UseSystemPasswordChar = true;
         chkShowPassword.Text = "Hiện mật khẩu";
         chkShowPassword.AutoSize = true;
-        chkShowPassword.Location = new Point(31, 340);
+        chkShowPassword.Location = new Point(25, 285);
         chkShowPassword.ForeColor = Color.FromArgb(85, 95, 115);
         card.Controls.Add(chkShowPassword);
         btnLogin.Text = "Đăng nhập";
-        btnLogin.Location = new Point(30, 377);
-        btnLogin.Size = new Size(150, 42);
+        btnLogin.Location = new Point(24, 320);
+        btnLogin.Size = new Size(135, 40);
         StyleButton(btnLogin, Color.FromArgb(79, 70, 229), Color.White);
         card.Controls.Add(btnLogin);
         btnExit.Text = "Thoát";
-        btnExit.Location = new Point(192, 377);
-        btnExit.Size = new Size(130, 42);
+        btnExit.Location = new Point(170, 320);
+        btnExit.Size = new Size(120, 40);
         StyleButton(btnExit, Color.FromArgb(239, 242, 248), Color.FromArgb(55, 65, 85));
         card.Controls.Add(btnExit);
-        card.Controls.Add(new Label { Text = "Dùng thử: student  /  123456", ForeColor = Color.FromArgb(130, 140, 158), AutoSize = true, Location = new Point(30, 425) });
+        card.Controls.Add(new Label { Text = "Dùng thử: student / 123456", ForeColor = Color.FromArgb(130, 140, 158), AutoSize = true, Location = new Point(24, 370) });
     }
 
     private static void AddField(Control parent, string title, TextBox input, int top)
     {
-        parent.Controls.Add(new Label { Text = title, AutoSize = true, Font = new Font("Segoe UI", 9.5F, FontStyle.Bold), ForeColor = Color.FromArgb(55, 65, 85), Location = new Point(30, top) });
-        input.Location = new Point(30, top + 25);
-        input.Size = new Size(292, 34);
+        parent.Controls.Add(new Label { Text = title, AutoSize = true, Font = new Font("Segoe UI", 9.5F, FontStyle.Bold), ForeColor = Color.FromArgb(55, 65, 85), Location = new Point(24, top) });
+        input.Location = new Point(24, top + 23);
+        input.Size = new Size(260, 32);
         input.BorderStyle = BorderStyle.FixedSingle;
         input.Font = new Font("Segoe UI", 11F);
         parent.Controls.Add(input);
