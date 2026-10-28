@@ -51,7 +51,7 @@ internal sealed class RegistrationForm : Form
         chkOnline.Text = "Học trực tuyến"; chkOnline.AutoSize = true; chkOnline.Location = new Point(400, 240);
         chkMaterials.Text = "Nhận tài liệu khóa học"; chkMaterials.AutoSize = true; chkMaterials.Location = new Point(400, 275);
         card.Controls.Add(chkOnline); card.Controls.Add(chkMaterials);
-        var hint = new Label { Text = "Thông tin được lưu an toàn trên máy này bằng SQLite.", AutoSize = true, ForeColor = Color.FromArgb(120, 130, 148), Location = new Point(30, 345) };
+        var hint = new Label { Text = "Thông tin được lưu trong SQL Server.", AutoSize = true, ForeColor = Color.FromArgb(120, 130, 148), Location = new Point(30, 345) };
         card.Controls.Add(hint);
         var register = new Button { Text = "Đăng ký học viên", Location = new Point(30, 380), Size = new Size(190, 42) };
         StyleButton(register, Color.FromArgb(79, 70, 229), Color.White);
@@ -59,18 +59,12 @@ internal sealed class RegistrationForm : Form
         card.Controls.Add(register);
         lblSaved.Location = new Point(240, 393); lblSaved.AutoSize = true; lblSaved.ForeColor = Color.FromArgb(44, 125, 87);
         card.Controls.Add(lblSaved);
-        Controls.Add(new Label { Text = "Các control được dùng: ComboBox binding · RadioButton · CheckBox · DateTimePicker · MaskedTextBox", AutoSize = true, ForeColor = Color.FromArgb(110, 120, 140), Location = new Point(46, 575) });
+        Controls.Add(new Label { Text = "ComboBox · RadioButton · CheckBox · DateTimePicker · MaskedTextBox", AutoSize = true, ForeColor = Color.FromArgb(110, 120, 140), Location = new Point(46, 575) });
     }
 
     private void LoadCourses()
     {
-        cboCourse.DataSource = new[]
-        {
-            new Course { Id = 1, Name = "Lập trình C# căn bản", Fee = 2_500_000 },
-            new Course { Id = 2, Name = "Phát triển ứng dụng .NET", Fee = 3_500_000 },
-            new Course { Id = 3, Name = "Cơ sở dữ liệu SQL", Fee = 2_800_000 },
-            new Course { Id = 4, Name = "Thiết kế giao diện WinForms", Fee = 2_200_000 }
-        };
+        cboCourse.DataSource = Database.GetCourses();
     }
 
     private static void AddField(Control parent, string title, Control input, int x, int y, int width)
@@ -108,7 +102,7 @@ internal sealed class RegistrationForm : Form
             Gender = rdoFemale.Checked ? "Nữ" : "Nam", CourseId = course.Id, CourseName = course.Name,
             IsOnline = chkOnline.Checked, NeedsMaterials = chkMaterials.Checked
         };
-        Database.Save(record);
+        record.Id = Database.Save(record);
         lblSaved.Text = $"Đã lưu hồ sơ #{record.Id} · Tổng {Database.Count()} học viên";
         var summary = $"Mã đăng ký: {record.Id}\nHọ tên: {record.FullName}\nĐiện thoại: {record.Phone}\nNgày sinh: {record.BirthDate:dd/MM/yyyy}\nGiới tính: {record.Gender}\nKhóa học: {record.CourseName}\nHọc trực tuyến: {(record.IsOnline ? "Có" : "Không")}\nNhận tài liệu: {(record.NeedsMaterials ? "Có" : "Không")}";
         MessageBox.Show(this, summary, "Đăng ký thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
