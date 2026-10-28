@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaiTap4.1-Login", "BaiTap4.1-Login", "{2ED71532-B5F4-E08F-7C3F-981D88D37867}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginApp", "BaiTap4.1-Login\LoginApp.csproj", "{A48694AC-DF2A-4A4E-B14A-671BA1C77590}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaiTap4.2-DangKy", "BaiTap4.2-DangKy", "{9EE80CAF-805A-BE18-4B0B-69B9B7AF8A0C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp", "BaiTap4.2-DangKy\RegistrationApp.csproj", "{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLySinhVienDB", "QuanLySinhVienDB\QuanLySinhVienDB.csproj", "{F41D9338-C286-4FB3-AE49-5FE7984F3EED}"
 EndProject
 Global
@@ -23,30 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|x64.Build.0 = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Debug|x86.Build.0 = Debug|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|x64.ActiveCfg = Release|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|x64.Build.0 = Release|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|x86.ActiveCfg = Release|Any CPU
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590}.Release|x86.Build.0 = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|x64.Build.0 = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Debug|x86.Build.0 = Debug|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|x64.ActiveCfg = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|x64.Build.0 = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|x86.ActiveCfg = Release|Any CPU
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6}.Release|x86.Build.0 = Release|Any CPU
 		{F41D9338-C286-4FB3-AE49-5FE7984F3EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F41D9338-C286-4FB3-AE49-5FE7984F3EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41D9338-C286-4FB3-AE49-5FE7984F3EED}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -62,9 +30,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A48694AC-DF2A-4A4E-B14A-671BA1C77590} = {2ED71532-B5F4-E08F-7C3F-981D88D37867}
-		{460FEB4C-A1DC-4B94-8594-852FEBB8DFA6} = {9EE80CAF-805A-BE18-4B0B-69B9B7AF8A0C}
 	EndGlobalSection
 EndGlobal
